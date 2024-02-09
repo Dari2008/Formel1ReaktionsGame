@@ -227,7 +227,7 @@ class GameThread:
             return
         
 
-        if self.getNextCurve() in self.passedCurves and (math.floor(self.currentPos+ .01)) >= self.getNextCurve():
+        if self.getNextCurve() in self.passedCurves and (math.floor(self.currentPos + .1)) >= self.getNextCurve():
             self.isMoving = False
             self.waitingForInput = True
             self.currentBlinkPos = self.getNextCurve()
