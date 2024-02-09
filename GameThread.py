@@ -46,6 +46,9 @@ class GameThread:
             GPIO.add_event_detect(23, GPIO.FALLING, callback=self.input, bouncetime=200)
 
     def start(self):
+        if not self.gameStop:
+            return
+        
         self.gameStop = True
 
         while self.gameStop:
@@ -158,6 +161,8 @@ class GameThread:
 
         self.strip.setPixels(math.floor(self.currentPos)+1, Server.CURVE_COLOR.setBrightnessZeroToOne(self.currentPos/1))
         
+        print(self.getNextCurve())
+
         if self.isBlinkingOn and self.getNextCurve() != None and self.getNextCurve() < self.strip.getLength():
             self.strip.setPixels(self.getNextCurve(), Server.CURVE_COLOR)
 
@@ -166,12 +171,12 @@ class GameThread:
         # self.printStrip()
 
     def input(self, e):
-        print("Input")
         if(self.gameStop):
             self.gameStop = False
             return
         if self.waitingForInput:
             if self.startTime != None:
+                print("Input")
                 self.isMoving = True
                 self.waitingForInput = False
                 self.times.append({"time": ((time.time() - self.startTime)*1000).__round__(2), "curve": self.curveIndex})
@@ -206,6 +211,7 @@ class GameThread:
         for curve in tmpCurves:
             if curve > self.currentPos:
                 return curve
+        return None
 
 
     def update(self):
@@ -228,8 +234,8 @@ class GameThread:
             self.passedCurves.remove(self.getNextCurve())
             self.startTime = time.time()
             self.curveIndex += 1
+            print("Waiting for input...")
         
         if self.currentBlinkTime <= 0:
             self.isBlinkingOn = not self.isBlinkingOn
             self.currentBlinkTime = Server.BLINK_TIME
-            print("Blinking")
