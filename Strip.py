@@ -38,7 +38,8 @@ class Strip:
                 self.strip.setPixelColor(i, PixelColor(self.pixels[i].getR(), self.pixels[i].getG(), self.pixels[i].getB()))
             self.strip.show()
         else:
-            print("Showing")
+            # print("Showing")
+            pass
 
     def clear(self):
         for i in range(self.length):

@@ -9,8 +9,8 @@ import os
 class Server:
     CURRENT_POISITION_COLOR: Color = Color(0, 255, 0)
     CURVE_COLOR: Color = Color(216, 89, 26)
-    BLINK_TIME: float = 0.1
-    SPEED: float = 10  #pro sekunde
+    BLINK_TIME: float = 0.3 # Millisekunden
+    SPEED: float = 10  #LED's pro sekunde
     PENALTY_TIME_MS: int = 300
     DIRECTORY = "./webpage/"
     CURRENT_RACE_DATA = "{}"
@@ -56,7 +56,10 @@ class Server:
         ssl_context = SSLContext(PROTOCOL_TLS_SERVER)
         ssl_context.load_cert_chain("./certificate/cert.pem", "./certificate/private.key")
 
-        self.server = HTTPServer(("192.168.178.157", self.port), ServerHandler)
+        if(os.name == "nt"):
+            self.server = HTTPServer(("localhost", self.port), ServerHandler)
+        else:
+            self.server = HTTPServer(("192.168.178.157", self.port), ServerHandler)
         
         self.server.socket = ssl_context.wrap_socket(self.server.socket, server_side=True)
         try:

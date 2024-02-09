@@ -82,7 +82,7 @@ class GameThread:
                 self.deltaTime = self.deltaTime if self.deltaTime != 0 else 0.0001
                 self.lastTime = time.time()
                 self.fps = 1 / self.deltaTime
-                self.deltaTime = self.deltaTime * 10
+                # self.deltaTime = self.deltaTime
 
                 self.update()
                 self.render()
@@ -118,7 +118,9 @@ class GameThread:
             if overallTimes.get(timeData) < smallest:
                 smallest = overallTimes.get(timeData)
 
-        reactionTimeTotal = (reactionTimeTotal).__round__(2)
+        if(reactionTimeTotal <= 0): return
+
+        reactionTimeTotal = (reactionTimeTotal).__round__(2) if reactionTimeTotal > 0 else 0.1
         timeTaken = ((reactionTimeTotal + penaltyTime)).__round__(2)
         penaltyTime = (penaltyTime).__round__(2)
         reactionTimeAvg = (reactionTimeTotal / len(self.times)).__round__(2)
@@ -157,7 +159,7 @@ class GameThread:
         self.strip.setPixels(math.floor(self.currentPos)+1, Server.CURVE_COLOR.setBrightnessZeroToOne(self.currentPos/1))
         
         if self.isBlinkingOn and self.getNextCurve() != None and self.getNextCurve() < self.strip.getLength():
-                self.strip.setPixels(self.getNextCurve(), Server.CURVE_COLOR)
+            self.strip.setPixels(self.getNextCurve(), Server.CURVE_COLOR)
 
         self.strip.show()
 
@@ -214,9 +216,10 @@ class GameThread:
             return
         
         if self.isMoving:
-            self.currentPos += 1 * self.getDeltaTime()
+            self.currentPos += Server.SPEED * self.getDeltaTime()
 
-        self.currentBlinkTime -= Server.SPEED * self.getDeltaTime()
+
+        self.currentBlinkTime -= self.getDeltaTime()
 
         
         if self.getNextCurve() in self.passedCurves and self.currentPos+self.deltaTime >= self.getNextCurve():
@@ -229,3 +232,4 @@ class GameThread:
         if self.currentBlinkTime <= 0:
             self.isBlinkingOn = not self.isBlinkingOn
             self.currentBlinkTime = Server.BLINK_TIME
+            print("Blinking")
