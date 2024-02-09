@@ -33,6 +33,7 @@ class GameThread:
         self.gameRunning = True
         self.server: Server = server
         self.curveIndex = 0
+        self.isGameRunning = False
 
         self.strip = Strip(18, 192) # länge: KP
 
@@ -46,7 +47,7 @@ class GameThread:
             GPIO.add_event_detect(23, GPIO.FALLING, callback=self.input, bouncetime=200)
 
     def start(self):
-        if not self.gameStop:
+        if self.isGameRunning:
             return
         
         self.gameStop = True
@@ -69,6 +70,7 @@ class GameThread:
         self.isBlinkingOn = True
         self.currentPos = 0
         self.curveIndex = 0
+        self.isGameRunning = True
 
         #Starting game
         self.thread = threading.Thread(target=self.run)
@@ -81,6 +83,7 @@ class GameThread:
         print("Started GameThread")
         try:
             while not self.gameStop:
+                self.isGameRunning = True
                 self.deltaTime = time.time() - self.lastTime
                 self.deltaTime = self.deltaTime if self.deltaTime != 0 else 0.0001
                 self.lastTime = time.time()
@@ -91,6 +94,7 @@ class GameThread:
                 self.render()
                 time.sleep(0.01)
         except KeyboardInterrupt:
+            self.isGameRunning = False
             pass
         
         self.processDataAndSendToServer()
@@ -215,6 +219,7 @@ class GameThread:
     def update(self):
         if self.currentPos >= self.strip.getLength():
             self.gameStop = True
+            self.isGameRunning = False
             self.currentPos = 0
             print(f"Game ended")
             return
