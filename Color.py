@@ -1,5 +1,5 @@
 class Color:
-    def __init__(self, r, g, b):
+    def __init__(self, r: int, g: int, b: int):
         self.r = r
         self.g = g
         self.b = b
@@ -13,13 +13,13 @@ class Color:
     def getB(self) -> int:
         return self.b
 
-    def setR(self, r):
+    def setR(self, r: int):
         self.r = r
 
-    def setG(self, g):
+    def setG(self, g: int):
         self.g = g
 
-    def setB(self, b):
+    def setB(self, b: int):
         self.b = b
 
     def setBrightness(self, brightness):
