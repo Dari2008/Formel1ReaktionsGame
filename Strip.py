@@ -1,7 +1,7 @@
 import Color
 from Color import Color
 import os
-if os.name == "nt":
+if os.name != "nt":
     from rpi_ws281x import PixelStrip, ws
     from rpi_ws281x import Color as PixelColor
 
