@@ -2,7 +2,7 @@ import Color
 from Color import Color
 import os
 if os.name == "nt":
-    from rpi_ws281x import PixelStrip
+    from rpi_ws281x import PixelStrip, ws
     from rpi_ws281x import Color as PixelColor
 
 class Strip:
@@ -33,10 +33,12 @@ class Strip:
 
     def show(self):
         if os.name == "nt":
+            print("Showing")
             for i in range(self.length):
                 self.strip.setPixelColor(i, PixelColor(self.pixels[i].getRed(), self.pixels[i].getGreen(), self.pixels[i].getBlue()))
             self.strip.show()
-        pass
+        else:
+            pass
 
     def clear(self):
         for i in range(self.length):
