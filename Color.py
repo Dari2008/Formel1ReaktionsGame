@@ -27,3 +27,6 @@ class Color:
     
     def getBrighness(self) -> int:
         return (self.r + self.g + self.b) / 3
+    
+    def __str__(self) -> str:
+        return "R: " + str(self.r) + " G: " + str(self.g) + " B: " + str(self.b) + " Brightness: " + str(self.getBrighness())
