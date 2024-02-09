@@ -243,5 +243,6 @@ class GameThread:
             print("Waiting for input...")
         
         if self.currentBlinkTime <= 0:
+            self.currentBlinkPos = self.getNextCurve()
             self.isBlinkingOn = not self.isBlinkingOn
             self.currentBlinkTime = Server.BLINK_TIME

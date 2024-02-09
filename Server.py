@@ -19,6 +19,7 @@ class Server:
     PLACE = 0
     SCORE = 0
     MINIMAL = 0
+    BRIGHTESS = 50
 
     def defaultStartGame():
         pass

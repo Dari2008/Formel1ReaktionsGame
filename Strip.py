@@ -1,6 +1,7 @@
 import Color
 from Color import Color
 import os
+from Server import Server
 if os.name != "nt":
     from rpi_ws281x import PixelStrip, ws
     from rpi_ws281x import Color as PixelColor
@@ -10,7 +11,7 @@ class Strip:
         self.length = length
         self.pixels = []
         if os.name != "nt":
-            self.strip = PixelStrip(length, pin, 800000, 10, False, 100, 0, ws.WS2812_STRIP)
+            self.strip = PixelStrip(length, pin, 800000, 10, False, Server.BRIGHTESS, 0, ws.WS2812_STRIP)
             self.strip.begin()
         for i in range(length):
             self.pixels.append(Color(0, 0, 0))
