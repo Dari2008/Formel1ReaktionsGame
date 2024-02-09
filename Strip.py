@@ -34,11 +34,10 @@ class Strip:
     def show(self):
         if os.name == "nt":
             print("Showing")
+        else:
             for i in range(self.length):
                 self.strip.setPixelColor(i, PixelColor(self.pixels[i].getR(), self.pixels[i].getG(), self.pixels[i].getB()))
             self.strip.show()
-        else:
-            pass
 
     def clear(self):
         for i in range(self.length):
