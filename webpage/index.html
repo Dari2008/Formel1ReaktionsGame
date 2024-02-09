@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <title>Page Title</title>
+        <meta name='viewport' content='width=device-width, initial-scale=0.8, maximum-scale=0.8, user-scalable=0'>
+
+        
+        <meta name=description content="Competition status">
+
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+
+        <meta name="apple-mobile-web-app-title" content="Competition">
+
+        <meta property="og:title" content="Competition">
+        <link rel="manifest" href="./site.webmanifest">
+
+        
+
+        <meta name="msapplication-TileColor" content="#1C1F22">
+        <meta name="theme-color" content="#1C1F22">
+
+        <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+        <link rel='stylesheet' type='text/css' media='screen' href='./rootVariables.css'>
+        <script src='main.js'></script>
+        <script src='Curve.js'></script>
+        <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+        
+        
+    </head>
+    <body>
+        <h1 class="title">Letztes Rennen</h1>
+        <div id="left">
+            <div id="timeTaken">
+                <p class="left"></p>
+                <p class="center"></p>
+                <p class="right"></p>
+            </div>
+            <div id="avgReactionTime">
+                <p class="left"></p>
+                <p class="center"></p>
+                <p class="right"></p>
+            </div>
+        </div>
+        <div id="right">
+            <div id="penaltyTime">
+                <p class="left"></p>
+                <p class="center"></p>
+                <p class="right"></p>
+            </div>
+            <div id="penaltyCount">
+                <p class="left"></p>
+                <p class="center"></p>
+                <p class="right"></p>
+            </div>
+        </div>
+
+        <div id="frame">
+            <table id="timeTable">
+
+                <thead>
+                    <tr>
+                        <th id="time">Zeit</th>
+                        <th id="curves">Kurven Nr.</th>
+                    </tr>
+                </thead>
+
+                <tbody id="timeTableBody">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <div id="placeBanner" style="">
+            <p id="spacerForScore"></p>
+            <span id="place">1. Place</span>
+            <span id="score">Score: 100 Millisekunden</span>
+            <span id="minimal">Minimale Reationszeit: 100 Millisekunden</span>
+        </div>
+
+        <button id="scores" onclick="location.href = './indexCurrentScore.html'">Scoreboard</button>
+        <button id="newGameBtn" onclick="generateNewName(); document.getElementById('newGameDialog').show()">Neues Rennen</button>
+        
+        <dialog id="newGameDialog">
+            <script>
+                generateNewName();
+            </script>
+            <button id="close" onclick="document.getElementById('newGameDialog').close()">+</button>
+            <h2 class="title">Neues Rennen</h2>
+            <div id="nameField">
+                <label for="name">Name: </label>
+                <input type="text" id="name" name="name" >
+            </div>
+            <button id="generateNewName" onclick="generateNewName()">Neuer Name</button>
+            <button id="start" onclick="startNewGame()">Start!</button>
+        </dialog>
+        
+        <details>
+            <summary>Quellen</summary>
+            <div>
+                <a href="https://www.flaticon.com/free-icons/chronometer" title="chronometer icons">Chronometer icons created by Secret Studio - Flaticon</a>
+            </div>
+        </details>
+    </body>
+
+</html>

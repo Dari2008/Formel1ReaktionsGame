@@ -1,0 +1,626 @@
+@import url("https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,400;0,900;1,300&display=swap");
+iframe {
+  border: none;
+}
+
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+html {
+  height: 100%;
+  background-color: rgb(28, 31, 34);
+  overflow: hidden;
+}
+
+button {
+  background-color: rgb(44, 49, 53);
+  color: white;
+  border: none;
+}
+
+button[buttonIconType=CROSS] {
+  top: 8px !important;
+  right: 8px !important;
+  transform: rotateZ(45deg) !important;
+  font-size: 30px !important;
+  background-color: rgba(0, 0, 0, 0) !important;
+  color: white !important;
+}
+
+button[buttonIconType=CROSS]:hover {
+  background-color: rgba(0, 0, 0, 0) !important;
+  color: rgb(82, 90, 95) !important;
+}
+
+button[buttonIconType=CROSS]:active {
+  background-color: rgba(0, 0, 0, 0) !important;
+  color: rgb(30, 34, 37) !important;
+}
+
+button[selected] {
+  background-color: rgb(21, 23, 25);
+}
+
+button:not([disabled]):hover {
+  background-color: rgb(62, 70, 75);
+}
+
+button:not([disabled]):active {
+  background-color: rgb(30, 34, 37);
+}
+
+option, select {
+  background-color: rgb(44, 49, 53);
+  color: white;
+  border: none;
+  height: 40px;
+  outline: none;
+}
+
+input {
+  background-color: rgb(44, 49, 53);
+  color: white;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  border-radius: 10px;
+}
+
+h1, h2, h3, h4, h5, h6, span, p, label {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+html, body {
+  width: 100%;
+  overflow: hidden;
+}
+
+* {
+  font-weight: 400;
+  font-family: "Saira", sans-serif;
+}
+
+.title {
+  color: white;
+  text-align: center;
+  font-size: 50px;
+}
+
+#timeTable {
+  width: 90% !important;
+  margin: auto;
+  margin-top: 50px;
+}
+
+#timeTable thead {
+  width: 100%;
+  color: white;
+  font-size: 30px;
+  text-decoration: underline;
+  position: sticky;
+  top: 0px;
+}
+
+#time {
+  width: 50%;
+}
+
+#curves {
+  width: 50%;
+}
+
+#timeTable tbody {
+  width: 100%;
+  font-size: 20px;
+}
+
+#timeTable tbody tr {
+  width: 100%;
+  text-align: center;
+  height: 200px;
+}
+
+#frame {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.penalty {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  box-shadow: inset 0px 0px 25px 8px rgba(255, 0, 0, 0.5);
+  color: #b3b3b3 !important;
+}
+
+.normal {
+  color: #b3b3b3 !important;
+}
+
+span {
+  font-size: 20px;
+}
+
+#timeTaken, #avgReactionTime, #penaltyTime, #penaltyCount {
+  margin: 5px;
+}
+
+#left {
+  position: fixed;
+  display: grid;
+  top: 20px;
+  left: 20px;
+  width: 50%;
+  height: auto;
+  color: white;
+  transform-origin: 0% 10%;
+  transform: rotate(10deg);
+}
+
+#right {
+  position: fixed;
+  display: grid;
+  top: 20px;
+  right: 0px;
+  width: 50%;
+  height: auto;
+  justify-items: end;
+  color: white;
+  transform-origin: 100% 90%;
+  transform: rotate(-10deg);
+}
+
+#left div, #right div {
+  display: flex;
+}
+
+summary {
+  color: white;
+}
+
+details {
+  display: none;
+  transition: height 1.2s ease;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  padding: 20px;
+  list-style: none;
+  height: 20px;
+  cursor: pointer;
+}
+details > summary::marker, details > summary::-webkit-details-marker {
+  content: "";
+  display: none;
+}
+
+details[open] {
+  transition: height 1.2s ease;
+  height: 100px;
+  background-color: #33393e;
+}
+details[open] > summary {
+  margin-bottom: 20px;
+}
+
+.right {
+  text-align: center;
+  justify-self: end;
+  float: right;
+}
+
+.left {
+  text-align: center;
+  float: left;
+  position: sticky;
+  left: 0;
+}
+
+.center {
+  text-align: center;
+  margin: auto;
+}
+
+.name {
+  font-size: 20px;
+}
+
+#timeTaken, #avgReactionTime, #penaltyTime, #penaltyCount {
+  margin-left: 15px;
+  margin-right: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #33393e;
+  width: 300px;
+  position: relative;
+  min-height: 63px;
+}
+
+#timeTaken::after,
+#avgReactionTime::after {
+  content: "";
+  height: 0px;
+  position: absolute;
+  top: 0px;
+  left: 100%;
+  transform: translateX(calc(-100% + 5px)) translateY(-5px);
+  border-top: 36px solid transparent;
+  border-bottom: 38px solid transparent;
+  border-left: 0px solid transparent;
+  border-right: 40px solid rgb(28, 31, 34);
+  z-index: 10;
+}
+
+#penaltyTime::before,
+#penaltyCount::before {
+  content: "";
+  height: 0px;
+  position: absolute;
+  top: 0px;
+  left: 0%;
+  transform: translateY(-5px) translateX(-5px) rotate(180deg);
+  border-top: 36px solid transparent;
+  border-bottom: 38px solid transparent;
+  border-left: 0px solid transparent;
+  border-right: 40px solid rgb(28, 31, 34);
+  z-index: 10;
+}
+
+#timeTaken::before,
+#avgReactionTime::before {
+  content: "";
+  height: 500%;
+  width: 10px;
+  position: absolute;
+  top: 0px;
+  left: 0%;
+  border-color: transparent #150c07 transparent transparent;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  transform: translateX(-50%);
+  background: linear-gradient(to right, #150c07, rgb(79, 44, 25), #150c07);
+  z-index: 5;
+}
+
+#penaltyTime::after,
+#penaltyCount::after {
+  content: "";
+  height: 500%;
+  width: 10px;
+  position: absolute;
+  top: 0px;
+  right: 0%;
+  border-color: transparent #150c07 transparent transparent;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  transform: translateX(50%);
+  background: linear-gradient(to right, #150c07, rgb(79, 44, 25), #150c07);
+  z-index: 5;
+}
+
+#newGameDialog {
+  width: 80%;
+  height: 80%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #282c30;
+  color: white;
+  border: 2px solid #3f454c;
+  border-radius: 10px;
+  padding: 20px;
+  transition: scale 0.4s linear;
+}
+
+#name {
+  width: calc(100% - 90px);
+  height: 50px;
+  font-size: 30px;
+  margin: 10px;
+  margin-left: 50px;
+  padding: 10px;
+  background-color: #33393e;
+  color: white;
+  border: 2px solid #4a525a;
+  border-radius: 10px;
+  color: #b3b3b3;
+}
+
+label[for=name] {
+  content: "Name: ";
+  font-size: 20px;
+  position: relative;
+  top: 10px;
+  left: 10px;
+  align-self: center;
+  font-size: 35px;
+  transform: translateY(-30%);
+  color: white;
+}
+
+#nameField {
+  display: flex;
+  width: calc(100% - 40px);
+  height: auto;
+  font-size: 30px;
+  margin: 10px;
+  padding: 10px;
+}
+
+#close {
+  color: white;
+  font-size: 40px;
+  transform: rotate(45deg);
+  background-color: rgba(0, 0, 0, 0);
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+#close:hover {
+  color: #b3b3b3;
+}
+
+#close:active {
+  transform: scale(0.97) rotate(45deg);
+}
+
+#newGameBtn {
+  cursor: pointer;
+  width: 250px;
+  height: 70px;
+  font-size: 25px;
+  padding: 0px;
+  color: #b3b3b3;
+  background-color: #33393e;
+  border: 2px solid #4a525a;
+  border-radius: 10px;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 100;
+}
+
+#newGameBtn:hover {
+  color: white;
+  background-color: #4a525a;
+}
+
+#newGameBtn:active {
+  transform: scale(0.97);
+}
+
+#scores {
+  cursor: pointer;
+  width: 250px;
+  height: 70px;
+  font-size: 25px;
+  padding: 0px;
+  color: #b3b3b3;
+  background-color: #33393e;
+  border: 2px solid #4a525a;
+  border-radius: 10px;
+  position: fixed;
+  bottom: 10px;
+  right: 290px;
+  z-index: 100;
+}
+
+#scores:hover {
+  color: white;
+  background-color: #4a525a;
+}
+
+#scores:active {
+  transform: scale(0.97);
+}
+
+#start {
+  position: absolute;
+  bottom: 20px;
+  margin-top: 50px;
+  width: calc(100% - 40px);
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  color: white;
+  background-color: #33393e;
+  border: 2px solid #4a525a;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#start:hover {
+  color: #b3b3b3;
+  background-color: #4a525a;
+}
+
+#start:active {
+  transform: scale(0.97);
+}
+
+#generateNewName {
+  width: 25%;
+  height: 40px;
+  display: flex;
+  float: right;
+  margin-right: 30px;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  color: white;
+  background-color: #33393e;
+  border: 2px solid #4a525a;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#generateNewName:hover {
+  color: #b3b3b3;
+  background-color: #4a525a;
+}
+
+#generateNewName:active {
+  transform: scale(0.98);
+}
+
+#placeBanner {
+  position: fixed;
+  height: 50%;
+  top: 50%;
+  left: 0px;
+  width: 100%;
+  transform: translateY(-50%);
+  background-color: rgb(90, 90, 90);
+  z-index: 1000;
+}
+
+#placeBanner::after {
+  content: "";
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background-color: #343434;
+  opacity: 0.6;
+  width: 100%;
+  height: 50%;
+  transform: translateY(-100%);
+  z-index: 1000;
+}
+
+#placeBanner::before {
+  content: "";
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  background-color: #343434;
+  opacity: 0.6;
+  width: 100%;
+  height: 50%;
+  transform: translateY(100%);
+  z-index: 1000;
+}
+
+#place {
+  display: flex;
+  position: fixed;
+  top: 50%;
+  left: 0px;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 100%;
+  font-size: 70px;
+  font-weight: 900;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: "Saira", sans-serif;
+}
+
+#spacerForScore {
+  width: 100%;
+  height: 70%;
+  position: relative;
+}
+
+#score {
+  display: block;
+  width: 100%;
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+  box-sizing: border-box;
+  font-family: "Saira", sans-serif;
+}
+
+#minimal {
+  display: block;
+  width: 100%;
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+  box-sizing: border-box;
+  font-family: "Saira", sans-serif;
+}
+
+#placeBanner:not(.first, .second, .third) {
+  color: white;
+}
+
+#placeBanner.first, #placeBanner.second, #placeBanner.third {
+  color: black;
+}
+
+#placeBanner.first {
+  background-color: rgb(192, 158, 71);
+}
+
+#placeBanner.first::after {
+  background-color: #8b7130;
+}
+
+#placeBanner.first::before {
+  background-color: #8b7130;
+}
+
+#placeBanner.second {
+  background-color: rgb(184, 182, 183);
+}
+
+#placeBanner.second::after {
+  background-color: #928f91;
+}
+
+#placeBanner.second::before {
+  background-color: #928f91;
+}
+
+#placeBanner.third {
+  background-color: rgb(172, 116, 77);
+}
+
+#placeBanner.third::after {
+  background-color: #775035;
+}
+
+#placeBanner.third::before {
+  background-color: #775035;
+}
+
+#placeBanner.show {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+#placeBanner:not(.show) {
+  animation: fadOut 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    z-index: -1;
+  }
+  to {
+    opacity: 1;
+    z-index: 1000;
+  }
+}
+@keyframes fadOut {
+  from {
+    opacity: 1;
+    z-index: 1000;
+  }
+  to {
+    opacity: 0;
+    z-index: -1;
+  }
+}/*# sourceMappingURL=main.css.map */

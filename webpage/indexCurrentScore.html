@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <title>Page Title</title>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <link rel='stylesheet' type='text/css' media='screen' href='mainCurrentScore.css'>
+        <link rel='stylesheet' type='text/css' media='screen' href='./rootVariables.css'>
+        <script src='mainCurrentScore.js'></script>
+        <script src='Score.js'></script>
+        <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+    </head>
+    <body>
+        <button id="back" onclick="location.href = '../'"><p class="tip">&lt;-</p><p class="tale">--------</p></button>
+        <div id="frame">
+            <table id="scores">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Score</th>
+                        <th>Minimum</th>
+                        <th>Datum</th>
+                    </tr>
+                </thead>
+                <tbody id="scoresBody">
+                    
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

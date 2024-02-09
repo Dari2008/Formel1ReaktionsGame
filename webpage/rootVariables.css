@@ -1,0 +1,74 @@
+iframe {
+  border: none;
+}
+
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+html {
+  height: 100%;
+  background-color: rgb(28, 31, 34);
+  overflow: hidden;
+}
+
+button {
+  background-color: rgb(44, 49, 53);
+  color: white;
+  border: none;
+}
+
+button[buttonIconType=CROSS] {
+  top: 8px !important;
+  right: 8px !important;
+  transform: rotateZ(45deg) !important;
+  font-size: 30px !important;
+  background-color: rgba(0, 0, 0, 0) !important;
+  color: white !important;
+}
+
+button[buttonIconType=CROSS]:hover {
+  background-color: rgba(0, 0, 0, 0) !important;
+  color: rgb(82, 90, 95) !important;
+}
+
+button[buttonIconType=CROSS]:active {
+  background-color: rgba(0, 0, 0, 0) !important;
+  color: rgb(30, 34, 37) !important;
+}
+
+button[selected] {
+  background-color: rgb(21, 23, 25);
+}
+
+button:not([disabled]):hover {
+  background-color: rgb(62, 70, 75);
+}
+
+button:not([disabled]):active {
+  background-color: rgb(30, 34, 37);
+}
+
+option, select {
+  background-color: rgb(44, 49, 53);
+  color: white;
+  border: none;
+  height: 40px;
+  outline: none;
+}
+
+input {
+  background-color: rgb(44, 49, 53);
+  color: white;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  border-radius: 10px;
+}
+
+h1, h2, h3, h4, h5, h6, span, p, label {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}/*# sourceMappingURL=rootVariables.css.map */
