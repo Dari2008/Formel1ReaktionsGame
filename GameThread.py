@@ -8,6 +8,7 @@ import json
 import os
 from Score import Score
 import sys
+from Color import Color
 if os.name == "nt":
     import keyboard
 else:
@@ -67,10 +68,6 @@ class GameThread:
         #Starting game
         self.thread = threading.Thread(target=self.run)
         self.thread.start()
-
-    def clear(self):
-        for i in range(self.strip.numpixels()):
-            self.strip.setPixelColor(i, PixelColor(0, 0, 0))
 
     def stop(self):
         self.gameStop = True

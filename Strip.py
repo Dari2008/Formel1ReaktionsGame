@@ -9,7 +9,7 @@ class Strip:
     def __init__(self, pin, length):
         self.length = length
         self.pixels = []
-        if os.name == "nt":
+        if os.name != "nt":
             self.strip = PixelStrip(length, pin, 800000, 10, False, 100, 0, ws.WS2812_STRIP)
             self.strip.begin()
         for i in range(length):
@@ -32,12 +32,12 @@ class Strip:
         self.pixels[index] = color
 
     def show(self):
-        if os.name == "nt":
-            print("Showing")
-        else:
+        if os.name != "nt":
             for i in range(self.length):
                 self.strip.setPixelColor(i, PixelColor(self.pixels[i].getR(), self.pixels[i].getG(), self.pixels[i].getB()))
             self.strip.show()
+        else:
+            print("Showing")
 
     def clear(self):
         for i in range(self.length):
