@@ -7,6 +7,7 @@ from copy import copy
 import os
 from Score import Score
 import sys
+import atexit
 
 if os.name == "nt":
     import keyboard
@@ -34,6 +35,8 @@ class GameThread:
         self.curveIndex = 0
 
         self.strip = Strip(18, 192) # länge: KP
+
+        atexit.register(self.strip.clearAndShow)
 
         if os.name == "nt":
             keyboard.on_press_key("space", self.input)

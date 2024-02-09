@@ -44,5 +44,9 @@ class Strip:
         for i in range(self.length):
             self.pixels[i] = Color(0, 0, 0)
 
+    def clearAndShow(self):
+        self.clear()
+        self.show()
+
     def getLength(self) -> int:
         return self.length
