@@ -233,7 +233,7 @@ class GameThread:
         self.currentBlinkTime -= self.getDeltaTime()
 
         
-        if self.getNextCurve() in self.passedCurves and (round(self.currentPos)+1) >= self.getNextCurve():
+        if self.getNextCurve() in self.passedCurves and (round(self.currentPos)) >= self.getNextCurve():
             self.isMoving = False
             self.waitingForInput = True
             self.currentBlinkPos = self.getNextCurve()
