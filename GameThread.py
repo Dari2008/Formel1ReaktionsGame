@@ -10,6 +10,8 @@ from Score import Score
 import sys
 if os.name == "nt":
     import keyboard
+else:
+    import RPi.GPIO as GPIO
 
 class GameThread:
     def __init__(self, getCurves, server):
@@ -35,6 +37,10 @@ class GameThread:
 
         if os.name == "nt":
             keyboard.on_press_key("space", self.input)
+        else:
+            GPIO.setmode(GPIO.BCM)
+            GPIO.setup(23, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+            GPIO.add_event_detect(23, GPIO.FALLING, callback=self.input, bouncetime=200)
 
     def start(self):
         self.gameStop = True
@@ -159,6 +165,7 @@ class GameThread:
         self.printStrip()
 
     def input(self, e):
+        print("Input")
         if(self.gameStop):
             self.gameStop = False
             return
