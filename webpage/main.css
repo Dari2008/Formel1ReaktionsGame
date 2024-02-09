@@ -97,12 +97,14 @@ html, body {
 }
 
 #timeTable thead {
+  background-color: rgb(28, 31, 34);
   width: 100%;
   color: white;
   font-size: 30px;
   text-decoration: underline;
   position: sticky;
   top: 0px;
+  z-index: 0;
 }
 
 #time {
@@ -115,18 +117,22 @@ html, body {
 
 #timeTable tbody {
   width: 100%;
-  font-size: 20px;
+  font-size: 70px;
 }
 
 #timeTable tbody tr {
   width: 100%;
   text-align: center;
-  height: 200px;
+  height: 60px;
 }
 
 #frame {
-  overflow-y: scroll;
-  overflow-x: hidden;
+  width: 100%;
+  height: auto;
+  max-height: 70%;
+  min-height: 200px;
+  overflow: hidden;
+  overflow-y: auto;
 }
 
 .penalty {
@@ -159,6 +165,7 @@ span {
   color: white;
   transform-origin: 0% 10%;
   transform: rotate(10deg);
+  z-index: 10;
 }
 
 #right {
@@ -172,6 +179,7 @@ span {
   color: white;
   transform-origin: 100% 90%;
   transform: rotate(-10deg);
+  z-index: 10;
 }
 
 #left div, #right div {
@@ -247,7 +255,7 @@ details[open] > summary {
   position: absolute;
   top: 0px;
   left: 100%;
-  transform: translateX(calc(-100% + 5px)) translateY(-5px);
+  transform: translateX(calc(-100% + 2px)) translateY(0px);
   border-top: 36px solid transparent;
   border-bottom: 38px solid transparent;
   border-left: 0px solid transparent;
@@ -262,7 +270,7 @@ details[open] > summary {
   position: absolute;
   top: 0px;
   left: 0%;
-  transform: translateY(-5px) translateX(-5px) rotate(180deg);
+  transform: translateY(0px) translateX(-2px) rotate(180deg);
   border-top: 36px solid transparent;
   border-bottom: 38px solid transparent;
   border-left: 0px solid transparent;

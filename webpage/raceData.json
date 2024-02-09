@@ -1,1 +1,1 @@
-[]
+{"timeTaken": 3141.75, "reactionTimeAvg": 423.62, "penaltyTime": 600, "penaltyCount": 2, "times": [{"time": 35.21, "curve": 1}, {"time": 119.09, "curve": 2}, {"time": 296.93, "curve": 3}, {"time": 255.08, "curve": 4}, {"time": 1349.99, "curve": 5}, {"time": 485.45, "curve": 6}], "penaltys": [{"time": 300, "curve": 1, "penalty": true, "reason": "Zu fr\u00fch gedr\u00fcckt"}, {"time": 300, "curve": 4, "penalty": true, "reason": "Zu fr\u00fch gedr\u00fcckt"}], "penaltyTimePerPenalty": 300}
