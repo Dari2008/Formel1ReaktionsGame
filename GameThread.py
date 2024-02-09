@@ -151,7 +151,7 @@ class GameThread:
         for i in range(math.floor(self.currentPos)):
             self.strip.setPixels(i, Server.CURRENT_POISITION_COLOR)
 
-        self.strip.setPixels(math.floor(self.currentPos)+1, Server.CURVE_COLOR.setBrightness(self.currentPos/1))
+        self.strip.setPixels(math.floor(self.currentPos)+1, Server.CURVE_COLOR.setBrightnessZeroToOne(self.currentPos/1))
         
         if self.isBlinkingOn and self.getNextCurve() != None and self.getNextCurve() < self.strip.getLength():
                 self.strip.setPixels(self.getNextCurve(), Server.CURVE_COLOR)
