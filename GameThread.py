@@ -226,14 +226,8 @@ class GameThread:
             print(f"Game ended")
             return
         
-        if self.isMoving:
-            self.currentPos += Server.SPEED * self.getDeltaTime()
 
-
-        self.currentBlinkTime -= self.getDeltaTime()
-
-        
-        if self.getNextCurve() in self.passedCurves and (round(self.currentPos)-1) >= self.getNextCurve():
+        if self.getNextCurve() in self.passedCurves and (round(self.currentPos)) >= self.getNextCurve():
             self.isMoving = False
             self.waitingForInput = True
             self.currentBlinkPos = self.getNextCurve()
@@ -241,6 +235,13 @@ class GameThread:
             self.startTime = time.time()
             self.curveIndex += 1
             print("Waiting for input...")
+
+
+        if self.isMoving:
+            self.currentPos += Server.SPEED * self.getDeltaTime()
+
+
+        self.currentBlinkTime -= self.getDeltaTime()
         
         if self.currentBlinkTime <= 0:
             self.currentBlinkPos = self.getNextCurve()
