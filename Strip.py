@@ -35,7 +35,7 @@ class Strip:
         if os.name == "nt":
             print("Showing")
             for i in range(self.length):
-                self.strip.setPixelColor(i, PixelColor(self.pixels[i].getRed(), self.pixels[i].getGreen(), self.pixels[i].getBlue()))
+                self.strip.setPixelColor(i, PixelColor(self.pixels[i].getR(), self.pixels[i].getG(), self.pixels[i].getB()))
             self.strip.show()
         else:
             pass
