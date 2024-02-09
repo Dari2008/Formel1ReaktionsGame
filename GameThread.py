@@ -34,6 +34,7 @@ class GameThread:
         self.server: Server = server
         self.curveIndex = 0
         self.isGameRunning = False
+        self.currentBlinkPos = 0
 
         self.strip = Strip(18, 192) # länge: KP
 
@@ -71,6 +72,7 @@ class GameThread:
         self.currentPos = 0
         self.curveIndex = 0
         self.isGameRunning = True
+        self.currentBlinkPos = 0
 
         #Starting game
         self.thread = threading.Thread(target=self.run)
@@ -165,8 +167,8 @@ class GameThread:
 
         self.strip.setPixels(math.floor(self.currentPos)+1, Server.CURVE_COLOR.setBrightnessZeroToOne(self.currentPos/1))
 
-        if self.isBlinkingOn and self.getNextCurve() != None and self.getNextCurve() < self.strip.getLength():
-            self.strip.setPixels(self.getNextCurve(), Server.CURVE_COLOR)
+        if self.isBlinkingOn and self.currentBlinkPos != None and self.currentBlinkPos < self.strip.getLength() and self.currentBlinkPos > 0:
+            self.strip.setPixels(self.currentBlinkPos, Server.CURVE_COLOR)
 
         self.strip.show()
 
@@ -234,6 +236,7 @@ class GameThread:
         if self.getNextCurve() in self.passedCurves and self.currentPos+(self.deltaTime*Server.SPEED) >= self.getNextCurve():
             self.isMoving = False
             self.waitingForInput = True
+            self.currentBlinkPos = self.getNextCurve()
             self.passedCurves.remove(self.getNextCurve())
             self.startTime = time.time()
             self.curveIndex += 1
