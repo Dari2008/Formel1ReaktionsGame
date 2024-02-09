@@ -56,7 +56,7 @@ class Server:
         ssl_context = SSLContext(PROTOCOL_TLS_SERVER)
         ssl_context.load_cert_chain("./certificate/cert.pem", "./certificate/private.key")
 
-        self.server = HTTPServer(("localhost", self.port), ServerHandler)
+        self.server = HTTPServer(("127.0.0.1", self.port), ServerHandler)
         
         self.server.socket = ssl_context.wrap_socket(self.server.socket, server_side=True)
         try:
