@@ -9,8 +9,6 @@ import keyboard
 import os
 from Score import Score
 import sys
-from rpi_ws281x import PixelStrip
-from rpi_ws281x import Color as PixelColor
 
 class GameThread:
     def __init__(self, getCurves, server):
@@ -62,6 +60,10 @@ class GameThread:
         #Starting game
         self.thread = threading.Thread(target=self.run)
         self.thread.start()
+
+    def clear(self):
+        for i in range(self.strip.numpixels()):
+            self.strip.setPixelColor(i, PixelColor(0, 0, 0))
 
     def stop(self):
         self.gameStop = True
