@@ -1,14 +1,17 @@
 import Color
 from Color import Color
-from rpi_ws281x import PixelStrip
-from rpi_ws281x import Color as PixelColor
+import os
+if os.name == "nt":
+    from rpi_ws281x import PixelStrip
+    from rpi_ws281x import Color as PixelColor
 
 class Strip:
     def __init__(self, pin, length):
         self.length = length
         self.pixels = []
-        self.strip = PixelStrip(length, pin, 800000, 10, False, 100, 0, ws.WS2812_STRIP)
-        self.strip.begin()
+        if os.name == "nt":
+            self.strip = PixelStrip(length, pin, 800000, 10, False, 100, 0, ws.WS2812_STRIP)
+            self.strip.begin()
         for i in range(length):
             self.pixels.append(Color(0, 0, 0))
         self.pin = pin
@@ -29,9 +32,10 @@ class Strip:
         self.pixels[index] = color
 
     def show(self):
-        for i in range(self.length):
-            self.strip.setPixelColor(i, PixelColor(self.pixels[i].getRed(), self.pixels[i].getGreen(), self.pixels[i].getBlue()))
-        self.strip.show()
+        if os.name == "nt":
+            for i in range(self.length):
+                self.strip.setPixelColor(i, PixelColor(self.pixels[i].getRed(), self.pixels[i].getGreen(), self.pixels[i].getBlue()))
+            self.strip.show()
         pass
 
     def clear(self):

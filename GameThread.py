@@ -5,10 +5,11 @@ import time
 from Strip import Strip
 from copy import copy
 import json
-import keyboard
 import os
 from Score import Score
 import sys
+if os.name == "nt":
+    import keyboard
 
 class GameThread:
     def __init__(self, getCurves, server):
