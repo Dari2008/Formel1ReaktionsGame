@@ -4,11 +4,10 @@ import math
 import time
 from Strip import Strip
 from copy import copy
-import json
 import os
 from Score import Score
 import sys
-from Color import Color
+
 if os.name == "nt":
     import keyboard
 else:

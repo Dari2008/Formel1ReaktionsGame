@@ -22,8 +22,17 @@ class Color:
     def setB(self, b: int):
         self.b = b
 
-    def setBrightness(self, brightness):
-        return Color(self.r * brightness, self.g * brightness, self.b * brightness)
+    def setBrightnessZeroToTwoFiveFive(self, brightness):
+        self.r = round(max(0, min(255, self.r * brightness * 255)))
+        self.g = round(max(0, min(255, self.g * brightness * 255)))
+        self.b = round(max(0, min(255, self.b * brightness * 255)))
+        return self
+    
+    def setBrightnessZeroToOne(self, brightness):
+        self.r = round(max(0, min(1, self.r * brightness)))
+        self.g = round(max(0, min(1, self.g * brightness)))
+        self.b = round(max(0, min(1, self.b * brightness)))
+        return self
     
     def getBrighness(self) -> int:
         return (self.r + self.g + self.b) / 3
