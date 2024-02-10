@@ -172,7 +172,7 @@ class GameThread:
 
         self.strip.show()
 
-        # self.printStrip()
+        self.printStrip()
 
     def input(self, e):
         if(self.gameStop):
