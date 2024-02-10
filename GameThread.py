@@ -162,7 +162,7 @@ class GameThread:
                 
     def render(self):
         self.strip.clear()
-        for i in range(math.floor(self.currentPos)):
+        for i in range(math.floor(self.currentPos)+1):
             self.strip.setPixels(i, Server.CURRENT_POISITION_COLOR)
 
         self.strip.setPixels(math.floor(self.currentPos)+1, Server.CURRENT_POISITION_COLOR.setBrightnessZeroToOne((self.currentPos/1).__round__(3)))
