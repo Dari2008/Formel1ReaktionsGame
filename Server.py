@@ -7,8 +7,8 @@ import json
 import os
 
 class Server:
-    CURRENT_POISITION_COLOR: Color = Color(0, 255, 0)
-    CURVE_COLOR: Color = Color(216, 89, 26)
+    CURRENT_POISITION_COLOR: Color = Color(255, 0, 255)
+    CURVE_COLOR: Color = Color(0, 182, 255)
     BLINK_TIME: float = 0.3 # Millisekunden
     SPEED: float = 10  #LED's pro sekunde
     PENALTY_TIME_MS: int = 300
