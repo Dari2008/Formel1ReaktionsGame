@@ -165,7 +165,7 @@ class GameThread:
         for i in range(math.floor(self.currentPos)):
             self.strip.setPixels(i, Server.CURRENT_POISITION_COLOR)
 
-        self.strip.setPixels(math.floor(self.currentPos)+1, Server.CURRENT_POISITION_COLOR.setBrightnessZeroToOne(self.currentPos/1))
+        self.strip.setPixels(math.floor(self.currentPos)+1, Server.CURRENT_POISITION_COLOR.setBrightnessZeroToOne((self.currentPos/1).__round__(3)))
 
         if self.isBlinkingOn and self.currentBlinkPos != None and self.currentBlinkPos < self.strip.getLength() and self.currentBlinkPos > 0:
             self.strip.setPixels(self.currentBlinkPos, Server.CURVE_COLOR)
@@ -226,8 +226,8 @@ class GameThread:
             print(f"Game ended")
             return
         
-
-        if self.getNextCurve() in self.passedCurves and (math.ceil(self.currentPos)) >= self.getNextCurve()+1:
+        print(str(math.ceil(self.currentPos)) + ":" + str(self.getNextCurve()))
+        if self.getNextCurve() in self.passedCurves and (math.ceil(self.currentPos)) >= self.getNextCurve():
             self.isMoving = False
             self.waitingForInput = True
             self.currentBlinkPos = self.getNextCurve()
