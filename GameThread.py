@@ -51,7 +51,9 @@ class GameThread:
         if self.isGameRunning:
             return
         
+        
         self.gameStop = True
+        self.isGameRunning = True
 
         while self.gameStop:
             time.sleep(0.3)
@@ -71,7 +73,6 @@ class GameThread:
         self.isBlinkingOn = True
         self.currentPos = 0
         self.curveIndex = 0
-        self.isGameRunning = True
         self.currentBlinkPos = 0
 
         #Starting game
@@ -91,7 +92,7 @@ class GameThread:
                 self.lastTime = time.time()
                 self.fps = 1 / self.deltaTime
                 # self.deltaTime = self.deltaTime
-
+                print("asdasdasd")
                 self.update()
                 self.render()
                 time.sleep(0.01)
@@ -172,9 +173,16 @@ class GameThread:
 
         self.strip.show()
 
-        self.printStrip()
+
+        # if(os.name == "nt"):
+        #     self.printStrip()
 
     def input(self, e):
+        print("Inpout")
+        if not self.isGameRunning:
+            threading.Thread(target=Server.startNewGame).start()
+            return
+
         if(self.gameStop):
             self.gameStop = False
             return
