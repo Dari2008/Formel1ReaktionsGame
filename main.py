@@ -7,7 +7,7 @@ class main:
 
     def __init__(self):
         self.currentPos = 0
-        self.curves = [30, 60, 90, 120, 150, 180, 210, 240, 270, 300]
+        self.curves = [30, 65, 85, 109, 134, 164, 194, 234, 264, 284, 295]
         self.server = Server(5000)
         self.gameThread = GameThread(self.getCurves, self.server)
         Server.startNewGame = self.gameThread.start
